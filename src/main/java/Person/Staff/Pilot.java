@@ -17,4 +17,7 @@ public class Pilot extends Staff{
         return this.licenceNo;
     }
 
+    public String flyThePlane() {
+        return "Autopilot engaged";
+    }
 }

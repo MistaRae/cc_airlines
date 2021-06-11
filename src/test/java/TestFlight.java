@@ -26,6 +26,13 @@ public class TestFlight {
     private Passenger passenger2;
     private Passenger passenger3;
     private Passenger passenger4;
+    private Passenger passenger5;
+    private Passenger passenger6;
+    private Passenger passenger7;
+    private Passenger passenger8;
+    private Passenger passenger9;
+    private Passenger passenger10;
+    private Passenger passenger11;
     private String flightNum;
     private String destination;
     private String departureAirport;
@@ -43,6 +50,13 @@ public class TestFlight {
         passenger2 = new Passenger("Sarah", 1);
         passenger3 = new Passenger("Jill", 1);
         passenger4 = new Passenger("Chris", 1);
+        passenger5 = new Passenger("Allan", 1);
+        passenger6 = new Passenger("John", 1);
+        passenger7 = new Passenger("Dan", 1);
+        passenger8 = new Passenger("Gordon", 1);
+        passenger9 = new Passenger("Aaron", 1);
+        passenger10 = new Passenger("Holly", 1);
+        passenger11 = new Passenger("Steven", 1);
         manifest = new ArrayList<>();
         flightNum = "SK4616";
         destination = "Stavanger";
@@ -113,6 +127,30 @@ public class TestFlight {
     @Test
     public void flightCanReturnTheNumberOfSeatsWithPassengersBooked(){
         flight1.addToManifest(passenger1);
-        assertEquals(10, flight1.getAvailableSeats());
+        assertEquals(9, flight1.getAvailableSeats());
+    }
+    @Test
+    public void flightCanReturnTheNumberOfSeatsWhenHalfFull(){
+        flight1.addToManifest(passenger1);
+        flight1.addToManifest(passenger2);
+        flight1.addToManifest(passenger3);
+        flight1.addToManifest(passenger4);
+        assertEquals(6, flight1.getAvailableSeats());
+    }
+
+    @Test
+    public void flightCantSurpassCapacity(){
+        flight1.addToManifest(passenger1);
+        flight1.addToManifest(passenger2);
+        flight1.addToManifest(passenger3);
+        flight1.addToManifest(passenger4);
+        flight1.addToManifest(passenger5);
+        flight1.addToManifest(passenger6);
+        flight1.addToManifest(passenger7);
+        flight1.addToManifest(passenger8);
+        flight1.addToManifest(passenger9);
+        flight1.addToManifest(passenger10);
+        flight1.addToManifest(passenger11);
+        assertEquals(0, flight1.getAvailableSeats());
     }
 }
