@@ -1,4 +1,6 @@
 import Flight.Flight;
+import Flight.Plane.Plane;
+import Flight.Plane.PlaneType;
 import Person.Passenger.Passenger;
 import Person.Staff.CabinCrew;
 import Person.Staff.Pilot;
@@ -14,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class TestFlight {
 
     private Flight flight1;
+    private Plane plane;
     private Pilot pilot1;
     private CabinCrew cabinCrew1;
     private CabinCrew cabinCrew2;
@@ -31,6 +34,7 @@ public class TestFlight {
 
     @Before
     public void setUp(){
+        plane = new Plane(PlaneType.BOEING747);
         pilot1 = new Pilot("Colin", Rank.CAPTAIN, 12345);
         cabinCrew1 = new CabinCrew("Jules", Rank.FLIGHT_ATTENDANT);
         cabinCrew2 = new CabinCrew("Jen", Rank.FLIGHT_ATTENDANT);
@@ -46,6 +50,7 @@ public class TestFlight {
         departureTime = "16:40";
 
         flight1 = new Flight(
+                plane,
                 pilot1,
                 crew,
                 manifest,
@@ -98,5 +103,16 @@ public class TestFlight {
     @Test
     public void flightHasDepartureTime(){
         assertEquals("16:40", flight1.getDepartureTime());
+    }
+
+    @Test
+    public void flightCanReturnTheNumberOfSeats(){
+        assertEquals(10, flight1.getAvailableSeats());
+    }
+
+    @Test
+    public void flightCanReturnTheNumberOfSeatsWithPassengersBooked(){
+        flight1.addToManifest(passenger1);
+        assertEquals(10, flight1.getAvailableSeats());
     }
 }

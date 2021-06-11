@@ -1,5 +1,7 @@
 package Flight;
 
+import Flight.Plane.Plane;
+import Flight.Plane.PlaneType;
 import Person.Passenger.Passenger;
 import Person.Staff.Pilot;
 import Person.Staff.Staff;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 public class Flight {
 
     private Pilot pilot;
+    private Plane plane;
     private ArrayList<Staff> crew;
     private ArrayList<Passenger> manifest;
     private String flightNumber;
@@ -16,13 +19,16 @@ public class Flight {
     private String departureAirport;
     private String departureTime;
 
-    public Flight(Pilot pilot,
+    public Flight(
+                  Plane plane,
+                  Pilot pilot,
                   ArrayList<Staff> crew,
                   ArrayList<Passenger> manifest,
                   String flightNumber,
                   String destination,
                   String departureAirport,
                   String departureTime) {
+        this.plane = plane;
         this.pilot = pilot;
         this.crew = crew;
         this.manifest = manifest;
@@ -60,5 +66,11 @@ public class Flight {
         return departureTime;
     }
 
+    public int getAvailableSeats() {
+        int capacity = PlaneType.BOEING747.getCapacity();
+        int reservedSeats = manifest.size();
+        int availableSeats = capacity - reservedSeats;
+        return availableSeats;
 
+    }
 }
