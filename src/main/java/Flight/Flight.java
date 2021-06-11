@@ -78,7 +78,7 @@ public class Flight {
         int capacity = PlaneType.BOEING747.getCapacity();
         int reservedSeats = manifest.size();
         int availableSeats = capacity - reservedSeats;
-        if (availableSeats >0) {
+        if (availableSeats > 0) {
             manifest.add(passenger);
         }
     }

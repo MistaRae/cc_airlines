@@ -12,5 +12,8 @@ public class CabinCrew extends Staff {
         return getRank();
     }
 
+    public String makeAnnouncement(String message) {
+        return message;
+    }
 }
 
