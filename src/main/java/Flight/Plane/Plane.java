@@ -19,4 +19,6 @@ public class Plane {
     public int getTotalWeightFromEnum() {
         return this.planeType.getTotalWeight();
     }
+
+
 }

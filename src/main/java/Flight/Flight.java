@@ -82,4 +82,9 @@ public class Flight {
             manifest.add(passenger);
         }
     }
+
+    public int getPayloadWeightFromPlane() {
+        return plane.getTotalWeightFromEnum();
+    }
+
 }

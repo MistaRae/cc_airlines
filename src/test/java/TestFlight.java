@@ -153,4 +153,10 @@ public class TestFlight {
         flight1.addToManifest(passenger11);
         assertEquals(0, flight1.getAvailableSeats());
     }
+
+    @Test
+    public void addingPassengerUpdatesPayloadWeight(){
+        flight1.addToManifest(passenger1);
+        assertEquals(10, flight1.getPayloadWeightFromPlane());
+    }
 }
